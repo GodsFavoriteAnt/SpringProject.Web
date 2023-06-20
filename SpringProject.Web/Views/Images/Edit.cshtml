@@ -1,0 +1,42 @@
+﻿@model SpringProject.Web.Models.ViewModels.EditImageRequest
+@{
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Edit Image</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null)
+    {
+        <form method="post">
+            <div class="mb-3">
+            <label class="form-label">Id</label>
+            <input type="text" id="id" class="form-control" asp-for="ImageId" readonly />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" id="title" class="form-control" asp-for="ImageTitle" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" id="description" class="form-control" asp-for="ImageDescription" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Url</label>
+            <input type="text" id="url" class="form-control" asp-for="ImageUrl" />
+        </div>
+        <div class="mb-3">
+            <div class="d-flex">
+                <button type="submit" class="btn btn-dark">Update</button>
+                <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="Images" asp-action="Delete">Delete</button>
+            </div>
+        </div>
+        </form>
+    }
+    else
+    {
+        <p>Image not found.</p>
+    }
+</div>

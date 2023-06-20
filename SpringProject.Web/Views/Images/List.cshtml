@@ -1,0 +1,51 @@
+﻿@model List<SpringProject.Web.Models.Domain.ProductImage>
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>List All Images</h1>
+    </div>
+</div>
+<div class="container py-5">
+    @if(Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Url</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var image in Model)
+                {
+                    <tr>
+                        <td>
+                            @image.ImageId
+                        </td>
+                        <td>
+                            @image.ImageTitle
+                        </td>
+                        <td>
+                            @image.ImageDescription
+                        </td>
+                        <td>
+                            @image.ImageUrl
+                        </td>
+                        <td>
+                            <a asp-area="" asp-controller="Images" asp-action="Edit" asp-route-id="@image.ImageId">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No images were found</p>
+    }
+</div>

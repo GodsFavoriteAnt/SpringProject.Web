@@ -1,0 +1,84 @@
+﻿@model SpringProject.Web.Models.ViewModels.EditArticleRequest
+@{
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Edit Article</h1>
+    </div>
+</div>
+<div class="container py-5">
+    @if(Model != null)
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" asp-for="ArticleID" readonly />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" asp-for="ArticleTitle" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Heading</label>
+                <input type="text" class="form-control" id="heading" asp-for="ArticleHeading" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image Upload</label>
+                <input type="file" id="imageUpload" class="form-control" />
+                <img src="" id="imageUploadDisplay" style="display:none; width:" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Uploaded Image Url</label>
+                <input type="text" class="form-control" id="uploadedimageurl" readonly />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" asp-for="Author" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date Published</label>
+                <input type="date" class="form-control" id="date" asp-for="DatePublished" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Summary</label>
+                <input type="text" class="form-control" id="summary" asp-for="Summary" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea type="text" class="form-control" id="content" asp-for="ArticleContent"></textarea>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="visible" asp-for="Visible">
+                <label class="form-check-label">
+                    Make Visible?
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Images</label>
+                <select class="form-select" asp-items="@Model.ProductImages" asp-for="SelectedImages"></select>
+            </div>
+            <div class="mb-3 d-flex">
+                <button type="submit" class="btn btn-dark me-2">
+                    Update
+                </button>
+                <button type="submit" class="btn btn-danger" asp-area="" asp-controller="Articles" asp-action="Delete">
+                    Delete
+                </button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>
+            No Article was found.
+        </p>
+    }
+</div>
+
+@section Scripts{
+    <script>
+        var editor = new FroalaEditor('#content', {
+            imageUploadURL: '/api/pictures'
+        });
+    </script>
+}

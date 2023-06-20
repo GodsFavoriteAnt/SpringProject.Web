@@ -1,0 +1,47 @@
+﻿@model List<SpringProject.Web.Models.Domain.Article>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                Pixel Addicts
+            </h1>
+            <p class="lead">
+                Pixel Addicts is a small, but dedicated group of programmers
+                and artists dedicated to bringing you great games. We specialize
+                in RPGs, Survival games, and Simulations. Browse our news articles
+                to keep up with our latest projects.
+            </p>
+        </div>
+        <div class="col-12 col-lg-6">
+            <img src="https://images.pexels.com/photos/7862617/pexels-photo-7862617.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="A boy celebrating his success in a video game by raising his arms in the air" 
+            class="d-block mx-lg-auto img-fluid" width="300"
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            @if(Model != null && Model.Any())
+            {
+                foreach(var article in Model)
+                {
+                    <div class="mb-5 bg-light box-shadow">
+                        <img src="@article.ProductImages.FirstOrDefault().ImageUrl" />
+                    </div>
+                    <h2 class="mb-2">@article.ArticleHeading</h2>
+                    <p class="mb-2">
+                        Author: @article.Author
+                    </p>
+                    <p class="mb-2">
+                        Summary: @article.Summary
+                    </p>
+                }
+            }
+        </div>
+    </div>
+</div>
